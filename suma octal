@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    printf("ingrese el numero octal\n");
+    char oct[65],oct1[65],aux1[8]={0,1,2,3,4,5,6,7};
+    char jh[65],dec[65],aux[2];
+    int len,len1;
+    scanf("%s", oct);
+    //printf("El numero ingresado es %s",oct);
+     len=strlen(oct);
+     printf("la longitud de la cadena %d ",len);
+    for(int i=0;i<len;i++){
+            if(oct[i]<48 || oct[i]>55){
+            printf("\nNumero ingresado no pertenece a octal");
+            return 0;
+                }
+            }
+     printf("\nEl numero ingresado es %s",oct);
+     printf("\nIngrese el numero a sumar en octal\n");
+     scanf("%s", oct1);
+     len1=strlen(oct1);
+     printf("La longitud del segundo numero es de %d",len1);
+      for(int j=0;j<len1;j++){
+            if(oct1[j]<'0'&&oct1[j]>'7'){
+            printf("\nNumero ingresado no pertenece a octal");
+            return 0;
+                }
+            }
+
+     printf("\nEl numero ingresado es %s",oct1);
+
+     int i;//saco variable por fuera para no afectar en otros resultados
+     for(i=strlen(oct);i>=0;i--){ //voy desde el maximo bit del arreglo hasta el menor bits del arreglo
+      jh[i]=(oct[i]-48)+(oct1[i]-48);//resto 48 en ascii para convertirlo en su rango
+        if(jh[i]>7){
+        if(i!=0) oct[i-1]++;
+        jh[i]-=8;
+
+       }
+       jh[i]+=48;
+       printf("%s\n",jh);
+    }
+
+  jh[strlen(oct)]=NULL;//Null para cortar la cadena
+//printf("la suma es %s",jh);
+/*for(int i=0;i<strlen(jh)-1;i++){
+ dec[i]=jh[i];//sumarle 48 para que quede entre el rango de los numeros en ascii
+}
+dec[i] = NULL;//corto la cadena para no mostrar basura
+*/
+printf("\nLa suma es %s",jh);
+printf("\n\n");
+
+ return 0;
+}
